@@ -1,3 +1,10 @@
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
 
 function appendSection(section){
  
@@ -62,6 +69,7 @@ function catClickEvent(){
     'Domestic'+'</button><br><br>'
 
     $("#chatbox").append(des);
+    sleep(2000)
     $("#chatbox").append(cat1);
     $("#chatbox").append(cat2);
       
