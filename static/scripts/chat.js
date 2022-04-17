@@ -84,7 +84,7 @@ function onClickDomesticCat(){
 
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a Domestic section you are looking for? 👇</div><br/>'
     $("#chatbox").append(des);
-   
+    sleep(2000)
     for(var i in domesticCatMap){
         let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-danger" onclick="showDomesticCatValue(\'' + i + '\')">'+i+'</span> &nbsp;'  
         $("#chatbox").append(e);
