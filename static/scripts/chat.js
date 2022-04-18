@@ -12,6 +12,12 @@ function appendSection(section){
 }
 
 
+function contentToRemove(id){
+    var content = document.querySelectorAll(id)
+    $(content).remove()
+    $("br").remove();
+   }
+
 // Collapsible
 var coll = document.getElementsByClassName("collapsible");
 
@@ -52,7 +58,7 @@ function firstBotMessage() {
    let firstBotMessage =  '<div class="startChat">I\'m TIA, your intelligent virtual assistant. <br>How can I help you today?</div><br/>'
     document.getElementById("botStarterMessage").innerHTML = firstBotMessage
 
-    let broweCatbutton = '<button style="animation: floatup 1s forwards;" type="button" onclick="catClickEvent()" id="category" class="btn btn-primary">' +
+    let broweCatbutton = '<button style="animation: floatup 1s forwards;" type="button" onclick="catClickEvent()" class="btn btn-primary">' +
     'Browse Our Products '+'</button><br><br>'
 
      $("#chat-timestamp").append(broweCatbutton);
@@ -60,7 +66,9 @@ function firstBotMessage() {
     document.getElementById("userInput").scrollIntoView(false);
 }
 
+
 function catClickEvent(){
+   
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a section you are looking for? 👇</div><br/>'
 
     let cat1 = '<button style="animation: floatup 1s forwards;" type="button" onclick="onclickIndustrialCat()" id="category" class="btn btn-primary">' +
@@ -68,23 +76,29 @@ function catClickEvent(){
     let cat2 = '<button style="animation: floatup 1s forwards;" type="button" onclick="onClickDomesticCat()" id="category" class="btn btn-primary">' +
     'Domestic'+'</button><br><br>'
 
+   
     $("#chatbox").append(des);
-    sleep(2000)
+   
+    sleep(3000)
+    
     $("#chatbox").append(cat1);
     $("#chatbox").append(cat2);
-      
+
    document.getElementById("userInput").scrollIntoView(false);
 
       
 }
 //Domestic
 
-function onClickDomesticCat(){
-    appendSection('Domestic Section')
 
+function onClickDomesticCat(){
+   
+    appendSection('Domestic Section')
+    contentToRemove('#category')
+    
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a Domestic section you are looking for? 👇</div><br/>'
     $("#chatbox").append(des);
-    sleep(2000)
+    sleep(1000)
     for(var i in domesticCatMap){
         let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-danger" onclick="showDomesticCatValue(\'' + i + '\')">'+i+'</span> &nbsp;'  
         $("#chatbox").append(e);
@@ -162,18 +176,19 @@ function showRanges(ranges){
 
 }
 
-//Indusrtiral
+//Industrial
 
 function onclickIndustrialCat(){
 
     appendSection('Industrial Section')
-    
+    contentToRemove('#category')
+
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a Industrial section you are looking for? 👇</div><br/>'
     $("#chatbox").append(des);
    
 
     for(var i in insdustrialCatMap){
-        let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-success" onclick="showIndustProduct(\'' + i + '\')">'+i+'</span>&nbsp;'
+        let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-success" id="insdustrial_l1" onclick="showIndustProduct(\'' + i + '\')">'+i+'</span>&nbsp;'
         $("#chatbox").append(e);
     }
     $("#chatbox").append('<br/><br/>');
@@ -184,22 +199,23 @@ function onclickIndustrialCat(){
 
 
 function showIndustProduct(product){ 
+
     appendSection(product)
+    contentToRemove('#insdustrial_l1')
+
 
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a one of section you are looking for? 👇</div><br/>'
     $("#chatbox").append(des);
     
     let p = insdustrialCatMap[product]
 
-
-
     for(var i= 0;i<p.length;i++){
         let p1;
         if(product==="LED LIGHTING"){
-             p1 =  '<span style="animation: floatup 1s forwards;" class="badge bg-warning text-dark" onclick="showLightiningCat(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
+             p1 =  '<span style="animation: floatup 1s forwards;" onclick="onLastLevel(\'' + p[i] + '\')" id="insdustrial_l2" class="badge bg-warning text-dark" onclick="showLightiningCat(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
             $("#chatbox").append(p1);
         }else{
-            p1 =  '<span style="animation: floatup 1s forwards;" class="badge bg-warning text-dark">'+p[i]+'</span>&nbsp;'
+            p1 =  '<span style="animation: floatup 1s forwards;" onclick="onLastLevel(\'' + p[i] + '\')" id="insdustrial_l2" class="badge bg-warning text-dark">'+p[i]+'</span>&nbsp;'
             $("#chatbox").append(p1);   
         }
 
@@ -211,14 +227,39 @@ function showIndustProduct(product){
 
 }
 
+function onLastLevel(product){
+
+let dialouge = "Great choice, we have a variety of exciting "+ product+" options available for you.<br><br>What type of "+product+" are you looking for?<br><br>💡 To check another consumer product, you can click on Restart"
+let des =  '<div class="startChat" class="alert alert-danger" role="alert">'+dialouge+'</div><br/>'
+contentToRemove('#insdustrial_l2')
+
+$("#chatbox").append(des);
+
+
+let restart =  '<button style="animation: floatup 1s forwards;" type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button><br><br>'
+$("#chatbox").append(restart);
+
+
+document.getElementById("userInput").scrollIntoView(false);
+
+
+}
+
+function onclickAppendBroweCat(){
+    catClickEvent()
+   // contentToRemove('#restart_button')
+
+}
 
 function showLightiningCat(cat){
     appendSection(cat)
+    contentToRemove('#insdustrial_l2')
+
 
     let p = lighting_map[cat]
 
     for(var i= 0;i<p.length;i++){
-        let p1 =  '<span style="animation: floatup 1s forwards;" class="badge rounded-pill bg-info text-dark">'+p[i]+'</span>&nbsp;'
+        let p1 =  '<span style="animation: floatup 1s forwards;" onclick="onLastLevel(\'' + p[i] + '\')" class="badge rounded-pill bg-info text-dark">'+p[i]+'</span>&nbsp;'
         $("#chatbox").append(p1);
     }
 
@@ -246,7 +287,7 @@ function getResponse() {
     let userText = $("#textInput").val();
 
     if (userText == "") {
-        userText = "Please provide field!";
+        userText = "Please choose from options!";
     }
 
     let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
