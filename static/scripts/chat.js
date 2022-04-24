@@ -6,7 +6,16 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
-function appendSection(section){
+function showLoader()
+{
+    $(".ticontainer").fadeIn("slow");
+}
+function hideLoader()
+{
+    $(".ticontainer").fadeOut("slow");
+}
+
+function appendChatResponse(section){
  
     $("#chatbox").append('<p class="userText"><span>' + section + '</span></p>');
 }
@@ -84,6 +93,7 @@ function catClickEvent(){
     $("#chatbox").append(cat1);
     $("#chatbox").append(cat2);
 
+
    document.getElementById("userInput").scrollIntoView(false);
 
       
@@ -92,15 +102,17 @@ function catClickEvent(){
 
 
 function onClickDomesticCat(){
+    showLoader()
+    sleep(3000)
    
-    appendSection('Domestic Section')
+    appendChatResponse('Domestic Section')
     contentToRemove('#category')
     
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a Domestic section you are looking for? 👇</div><br/>'
     $("#chatbox").append(des);
     sleep(1000)
     for(var i in domesticCatMap){
-        let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-danger" onclick="showDomesticCatValue(\'' + i + '\')">'+i+'</span> &nbsp;'  
+        let e =  '<span style="animation: floatup 1s forwards;" id="Dom1" class="badge bg-danger" onclick="showDomesticCatValue(\'' + i + '\')">'+i+'</span> &nbsp;'  
         $("#chatbox").append(e);
  
     }
@@ -111,7 +123,9 @@ function onClickDomesticCat(){
 }
 
 function showDomesticCatValue(cat){
-    appendSection(cat)
+    appendChatResponse(cat)
+    contentToRemove('#Dom1')
+
 
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a ranges available from below? 👇</div><br/>'
     $("#chatbox").append(des);
@@ -122,15 +136,15 @@ function showDomesticCatValue(cat){
  
         let e;
         if( p[i]=="FIRE RETARDANT (FR)" || p[i] =="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)" ||  p[i] =="ZERO HALOGEN FIRE RETARDANT (ZHFR)" ){
-            e =  '<span style="animation: floatup 1s forwards;" class="badge rounded-pill bg-danger" onclick="showRanges(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
+            e =  '<span style="animation: floatup 1s forwards;" id="Dom2" class="badge rounded-pill bg-danger" onclick="showRanges(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
     
         }
         else if(p[i] === "COMMERCIAL LIGHTING" || p[i] === "CONSUMER LIGHTING" ){
-            e =  '<span style="animation: floatup 1s forwards;" class="badge rounded-pill bg-danger" onclick="showLightingMapinfo(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
+            e =  '<span style="animation: floatup 1s forwards;" id="Dom2" class="badge rounded-pill bg-danger" onclick="showLightingMapinfo(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
 
         }
         else{
-            e =  '<span style="animation: floatup 1s forwards;" class="badge rounded-pill bg-danger">'+p[i]+'</span> &nbsp;'
+            e =  '<span style="animation: floatup 1s forwards;" id="Dom2" class="badge rounded-pill bg-danger" onclick="onLastLevelForDomestic(\'' + p[i] + '\')">'+p[i]+'</span> &nbsp;'
         }
         $("#chatbox").append(e);
     }
@@ -142,12 +156,12 @@ function showDomesticCatValue(cat){
 
 
 function showLightingMapinfo(info){
-    appendSection(info)
+    appendChatResponse(info)
+    contentToRemove('#Dom2')
     
-
-let p = led_lighting_map[info];
-for(var i= 0;i<p.length;i++){
-    let p1 =  '<span style="animation: floatup 1s forwards;"  class="badge bg-warning text-dark">'+p[i]+'</span>&nbsp;'
+    let p = led_lighting_map[info];
+    for(var i= 0;i<p.length;i++){
+    let p1 =  '<span style="animation: floatup 1s forwards;" id="Dom3" class="badge bg-warning text-dark" onclick="removeshowLightingMapinfo(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
     $("#chatbox").append(p1);
 }
 
@@ -156,31 +170,72 @@ document.getElementById("userInput").scrollIntoView(false);
 
 }
 
+function removeshowLightingMapinfo(product){
+    let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a one of section you are looking for? 👇</div><br/>'
+    $("#chatbox").append(des);
+    appendChatResponse(product)
+    contentToRemove('#Dom3') 
+    onLastLevelForDomestic(product)
+
+}
+
 function showRanges(ranges){
-    appendSection(ranges)
+    appendChatResponse(ranges)
+    contentToRemove('#Dom2')
 
-    let rage;
+    let message = ranges==="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)"?"Can you select a "+ranges+" size that best defines your need? 👇 If you are not sure about which Size and length to select, you can click on Restart":"";
 
+    let rage
+    let rage_m
     if(ranges==="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)"){
+
+        rage_m = `<div style="white-space: pre">
+        Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm 
+        | 6.0 mm | 10.0 mm | 16.0 mm | 25.0 mm 
+        Length :180 Meter 
+        </div>`
         rage_= "Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm | 6.0 mm |<br> 10.0 mm | 16.0 mm | 25.0 mm |</br>Length :180 Meter "
 
     }else{
         rage_= "Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm | 6.0 mm |<br> 10.0 mm | 16.0 mm | 25.0 mm |</br>Length : 90 Meter & 180 Meter "
-
+        rage_m = `<div style="white-space: pre">
+        Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm 
+        | 6.0 mm | 10.0 mm | 16.0 mm | 25.0 mm 
+        90 Meter & 180 Meter
+        </div>`
     }
 
-    let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+rage_+'</span>'
-    $("#chatbox").append(e);
+    let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+rage_m+'</span>'
     $("#chatbox").append('<br/><br/>');
+
+    $("#chatbox").append(e);
+    onLastLevelForDomestic(ranges)
     document.getElementById("userInput").scrollIntoView(false);
 
 }
+function onLastLevelForDomestic(product){
+
+    let dialouge = "Great choice, we have a variety of exciting "+ product+" options available for you.<br><br>What type of "+product+" are you looking for?<br><br>💡 To check another domestic product, you can click on Restart"
+    let des =  '<div class="startChat" class="alert alert-danger" role="alert">'+dialouge+'</div><br/>'
+    contentToRemove('#Dom2')
+    
+    $("#chatbox").append(des);
+    
+    
+    let restart =  '<button style="animation: floatup 3s forwards;" type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button><br><br>'
+    $("#chatbox").append(restart);
+    
+    
+    document.getElementById("userInput").scrollIntoView(false);
+    
+    
+    }
 
 //Industrial
 
 function onclickIndustrialCat(){
 
-    appendSection('Industrial Section')
+    appendChatResponse('Industrial Section')
     contentToRemove('#category')
 
     let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a Industrial section you are looking for? 👇</div><br/>'
@@ -200,7 +255,7 @@ function onclickIndustrialCat(){
 
 function showIndustProduct(product){ 
 
-    appendSection(product)
+    appendChatResponse(product)
     contentToRemove('#insdustrial_l1')
 
 
@@ -228,6 +283,7 @@ function showIndustProduct(product){
 }
 
 function onLastLevel(product){
+    appendChatResponse(product)
 
 let dialouge = "Great choice, we have a variety of exciting "+ product+" options available for you.<br><br>What type of "+product+" are you looking for?<br><br>💡 To check another consumer product, you can click on Restart"
 let des =  '<div class="startChat" class="alert alert-danger" role="alert">'+dialouge+'</div><br/>'
@@ -252,7 +308,7 @@ function onclickAppendBroweCat(){
 }
 
 function showLightiningCat(cat){
-    appendSection(cat)
+    appendChatResponse(cat)
     contentToRemove('#insdustrial_l2')
 
 
