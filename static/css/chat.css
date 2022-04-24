@@ -188,3 +188,7 @@
         color: black;
         text-align: left;
 }
+
+.outer-container {
+    background-image: url(https://kenticocmsprodapp.azurewebsites.net/HavellsProductImages/HavellsIndia/Content/CHATBOT/CHATBOT_BG_IMAGE.png) !important;
+}
