@@ -110,9 +110,9 @@
 }
 
 .userText span {
+    background-color: rgb(227, 53, 48);
     line-height: 1.5em;
     display: inline-block;
-    background: #5ca6fa;
     padding: 10px;
     border-radius: 8px;
     border-bottom-right-radius: 2px;

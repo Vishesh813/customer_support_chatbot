@@ -70,7 +70,14 @@ function firstBotMessage() {
     let broweCatbutton = '<button style="animation: floatup 1s forwards;" type="button" onclick="catClickEvent()" class="btn btn-primary">' +
     'Browse Our Products '+'</button><br><br>'
 
-     $("#chat-timestamp").append(broweCatbutton);
+    let chooseBrowseWelcomeMessage =  '<div class="startChat" class="alert alert-danger" role="alert"><b>Here are the things I can help you with😀<b></div><br/>'
+
+    appendChatResponse("Go ahead")
+    $("#chatbox").append(chooseBrowseWelcomeMessage);
+
+
+     $("#chatbox").append(broweCatbutton);
+
 
     document.getElementById("userInput").scrollIntoView(false);
 }
@@ -184,10 +191,15 @@ function showRanges(ranges){
     contentToRemove('#Dom2')
 
     let message = ranges==="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)"?"Can you select a "+ranges+" size that best defines your need? 👇 If you are not sure about which Size and length to select, you can click on Restart":"";
-
+    let eqD =  '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+equipMentSize1[0]+'</span>&nbsp;'
     let rage
     let rage_m
     if(ranges==="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)"){
+        
+        for(var i=1;i<equipMentSize1.length;i++){
+             eqD = eqD + '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+equipMentSize1[i]+'</span>&nbsp;'
+
+        }
 
         rage_m = `<div style="white-space: pre">
         Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm 
@@ -197,6 +209,13 @@ function showRanges(ranges){
         rage_= "Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm | 6.0 mm |<br> 10.0 mm | 16.0 mm | 25.0 mm |</br>Length :180 Meter "
 
     }else{
+        for(var i=1;i<equipMentSize2.length;i++){
+            eqD = eqD + '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+equipMentSize2[i]+'</span>&nbsp;'
+
+       }
+
+
+
         rage_= "Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm | 6.0 mm |<br> 10.0 mm | 16.0 mm | 25.0 mm |</br>Length : 90 Meter & 180 Meter "
         rage_m = `<div style="white-space: pre">
         Diameter Sizes : 0.5 mm | 0.75 mm | 1.5 mm| 2.5 mm | 4.0 mm 
@@ -208,7 +227,7 @@ function showRanges(ranges){
     let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+rage_m+'</span>'
     $("#chatbox").append('<br/><br/>');
 
-    $("#chatbox").append(e);
+    $("#chatbox").append(eqD+'<br><br>');
     onLastLevelForDomestic(ranges)
     document.getElementById("userInput").scrollIntoView(false);
 

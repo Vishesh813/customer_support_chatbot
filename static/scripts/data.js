@@ -31,3 +31,7 @@ const insdustrialCatMap= {
 "EPC SOLUTION":["SURVEY","DESIGN","ENGINEERING","PROCUREMENT","TESTING & COMMISSIONING OF LINE","S / S DISTRIBUTION & TRANSMISSION","CLASS (HT, LT & EHT) BOTH OVERHEAD","UNDERGROUND ON TOTAL TRUNKEY BASIS"]
 }
 
+
+const equipMentSize1 = [ "0.5 mm" ,"0.75 mm" ,"1.5 mm","2.5 mm" ,"4.0 mm" ,"6.0 mm" ,"10.0 mm" ,"16.0 mm" ,"25.0 mm" ," Length :180 Meter"]
+
+const equipMentSize2 = [ "0.5 mm" ,"0.75 mm" ,"1.5 mm","2.5 mm" ,"4.0 mm" ,"6.0 mm" ,"10.0 mm" ,"16.0 mm" ,"25.0 mm" ," Length :180 Meter"]
