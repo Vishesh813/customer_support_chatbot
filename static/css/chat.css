@@ -97,7 +97,8 @@
     font-size: 16px;
     color: #000;
     background-color: white;
-    outline: none
+    outline: none;
+    height: 60px;
 }
 
 .userText {
@@ -190,7 +191,8 @@
 }
 
 .full-chat-block {
-    background-image: url(https://kenticocmsprodapp.azurewebsites.net/HavellsProductImages/HavellsIndia/Content/CHATBOT/CHATBOT_BG_IMAGE.png) !important;
+    width: 600px;
+   /* background-image: url(https://kenticocmsprodapp.azurewebsites.net/HavellsProductImages/HavellsIndia/Content/CHATBOT/CHATBOT_BG_IMAGE.png) !important;*/
 }
 
 .loader {

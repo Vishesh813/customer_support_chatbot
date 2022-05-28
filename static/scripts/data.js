@@ -35,3 +35,15 @@ const insdustrialCatMap= {
 const equipMentSize1 = [ "0.5 mm" ,"0.75 mm" ,"1.5 mm","2.5 mm" ,"4.0 mm" ,"6.0 mm" ,"10.0 mm" ,"16.0 mm" ,"25.0 mm" ," Length :180 Meter"]
 
 const equipMentSize2 = [ "0.5 mm" ,"0.75 mm" ,"1.5 mm","2.5 mm" ,"4.0 mm" ,"6.0 mm" ,"10.0 mm" ,"16.0 mm" ,"25.0 mm" ," Length :180 Meter"]
+
+
+const resource = {
+    "POWER CABLE":"resource/4- Cable Catalogue Domestic N.pdf",
+    "WIRE ROAD":"resource/9- Wire Rod Catalogue.pdf",
+    "OPTICAL FIBER CABLE":"resource/10- Optical Fiber Catalogue.pdf",
+    "EPC SOLUTION":"resource/12- EPC catalogue.pdf",
+    "CONDUCTOR":"resource/5- HTLS Conductor Catalogue.pdf"
+
+}
+
+
