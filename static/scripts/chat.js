@@ -304,7 +304,7 @@ function showIndustProduct(product){
 function onLastLevel(product){
     appendChatResponse(product)
 
-let dialouge = "Great choice, we have a variety of exciting "+ product+" options available for you.<br><br>What type of "+product+" are you looking for?<br><br>💡 To check another consumer product, you can click on Restart"
+let dialouge = "Great choice, we have a variety of exciting "+ product+" options available for you.<br><br>What type of "+product+" are you looking for?<br><br>To get more information💡about product,please <a id='download_link'  href = 'resource/5- HTLS Conductor Catalogue.pdf' download ><b>download</b></a> brochure.<br>Or for checking more consumer product you can click on Restart"
 let des =  '<div class="startChat" class="alert alert-danger" role="alert">'+dialouge+'</div><br/>'
 contentToRemove('#insdustrial_l2')
 

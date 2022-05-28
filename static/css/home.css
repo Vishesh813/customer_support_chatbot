@@ -11,6 +11,11 @@ span {
     cursor: pointer; 
 }
 
+#download_link {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
 
 .tiblock {
     align-items: center;
