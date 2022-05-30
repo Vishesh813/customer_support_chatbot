@@ -28,11 +28,16 @@ function contentToRemove(id){
 
 // Collapsible
 var coll = document.getElementsByClassName("collapsible");
+var element = document.getElementById('cross-icon');
+element.style.display = "none";
+
 
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
-        this.classList.toggle("active");
+        $(element).toggle();
 
+        this.classList.toggle("active");
+        
         var content = this.nextElementSibling;
 
         if (content.style.maxHeight) {
@@ -66,7 +71,7 @@ function firstBotMessage() {
    let firstBotMessage =  '<div class="startChat">I\'m TIA, your intelligent virtual assistant. <br>How can I help you today?</div><br/>'
     document.getElementById("botStarterMessage").innerHTML = firstBotMessage
 
-    let broweCatbutton = '<button style="animation: floatup 3s forwards;" type="button" onclick="catClickEvent()" class="btn btn-primary">' +
+    let broweCatbutton = '<button style="animation: floatup 3s forwards; width:auto;" type="button" onclick="catClickEvent()" class="btn btn-primary">' +
     'Browse Our Products '+'</button><br><br>'
 
     let chooseBrowseWelcomeMessage =  '<div class="startChat" class="alert alert-danger" role="alert"><b>Here are the things I can help you with😀<b></div><br/>'
