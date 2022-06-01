@@ -17,7 +17,7 @@ function hideLoader()
 
 function appendChatResponse(section){
  
-    $("#chatbox").append('<p class="userText"><span>' + section + '</span></p>');
+    $("#chatbox").append('<p id="give_margin" class="userText"><span>' + section + '</span></p>');
 }
 
 
@@ -68,13 +68,13 @@ function getTime() {
 
 // Gets the first message
 function firstBotMessage() {
-   let firstBotMessage =  '<div class="startChat">I\'m TIA, your intelligent virtual assistant. <br>How can I help you today?</div><br/>'
+   let firstBotMessage =  '<div id="give_margin" class="startChat">I\'m TIA, your intelligent virtual assistant. <br>How can I help you today?</div>'
     document.getElementById("botStarterMessage").innerHTML = firstBotMessage
 
-    let broweCatbutton = '<button style="animation: floatup 3s forwards; width:auto;" type="button" onclick="catClickEvent()" class="btn btn-primary">' +
-    'Browse Our Products '+'</button><br><br>'
+    let broweCatbutton = '<button id="give_margin" style="animation: floatup 1s forwards; width:auto; border-radius:15px;" type="button" onclick="catClickEvent()" class="btn btn-primary">' +
+    'Browse Our Products '+'</button>'
 
-    let chooseBrowseWelcomeMessage =  '<div class="startChat" class="alert alert-danger" role="alert"><b>Here are the things I can help you with😀<b></div><br/>'
+    let chooseBrowseWelcomeMessage =  '<div id="give_margin" class="startChat" class="alert alert-danger" role="alert"><b>Here are the things I can help you with😀<b></div>'
 
     appendChatResponse("Go ahead")
     $("#chatbox").append(chooseBrowseWelcomeMessage);
@@ -89,17 +89,17 @@ function firstBotMessage() {
 
 function catClickEvent(){
    
-    let des =  '<div class="startChat" class="alert alert-danger" role="alert">Can you pick a section you are looking for? 👇</div><br/>'
+    let des =  '<div id="give_margin" class="startChat" class="alert alert-danger" role="alert">Can you pick a section you are looking for? 👇</div>'
 
-    let cat1 = '<button style="animation: floatup 3s forwards;" type="button" onclick="onclickIndustrialCat()" id="category" class="btn btn-primary">' +
-    'Industrial'+'</button>&nbsp;'
-    let cat2 = '<button style="animation: floatup 3s forwards;" type="button" onclick="onClickDomesticCat()" id="category" class="btn btn-primary">' +
-    'Domestic'+'</button><br><br>'
+    let cat1 = '<button  style="margin-bottom: 10px;border-radius: 12px;" type="button" onclick="onclickIndustrialCat()" id="category" class="btn btn-primary">' +
+    'Industrial'+'</button>'
+    let cat2 = '<button  style="margin-left: 10px; margin-bottom: 10px;border-radius: 12px;" type="button" onclick="onClickDomesticCat()" id="category" class="btn btn-primary">' +
+    'Domestic'+'</button>'
 
    
     $("#chatbox").append(des);
    
-    sleep(3000)
+    //sleep(3000)
     
     $("#chatbox").append(cat1);
     $("#chatbox").append(cat2);
@@ -114,7 +114,7 @@ function catClickEvent(){
 
 function onClickDomesticCat(){
    // showLoader()
-    sleep(1000)
+    //sleep(1000)
     //contentToRemove("br")
 
    
@@ -125,7 +125,7 @@ function onClickDomesticCat(){
     $("#chatbox").append(des);
     sleep(1000)
     for(var i in domesticCatMap){
-        let e =  '<span style="animation: floatup 3s forwards;" id="Dom1" class="badge bg-danger" onclick="showDomesticCatValue(\'' + i + '\')">'+i+'</span> &nbsp;'  
+        let e =  '<span style="animation: floatup 1s forwards;" id="Dom1" class="badge bg-danger" onclick="showDomesticCatValue(\'' + i + '\')">'+i+'</span> '  
         $("#chatbox").append(e);
  
     }
@@ -151,15 +151,15 @@ function showDomesticCatValue(cat){
  
         let e;
         if( p[i]=="FIRE RETARDANT (FR)" || p[i] =="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)" ||  p[i] =="ZERO HALOGEN FIRE RETARDANT (ZHFR)" ){
-            e =  '<span style="animation: floatup 3s forwards;" id="Dom2" class="badge rounded-pill bg-danger" onclick="showRanges(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
+            e =  '<span style="animation: floatup 1s forwards; margin-left:10px;" id="Dom2" class="badge rounded-pill bg-danger" onclick="showRanges(\'' + p[i] + '\')">'+p[i]+'</span>'
     
         }
         else if(p[i] === "COMMERCIAL LIGHTING" || p[i] === "CONSUMER LIGHTING" ){
-            e =  '<span style="animation: floatup 3s forwards;" id="Dom2" class="badge rounded-pill bg-danger" onclick="showLightingMapinfo(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
+            e =  '<span style="animation: floatup 1s forwards;margin-left:10px;" id="Dom2" class="badge rounded-pill bg-danger" onclick="showLightingMapinfo(\'' + p[i] + '\')">'+p[i]+'</span>'
 
         }
         else{
-            e =  '<span style="animation: floatup 3s forwards;" id="Dom2" class="badge rounded-pill bg-danger" onclick="onLastLevelForDomestic(\'' + p[i] + '\')">'+p[i]+'</span> &nbsp;'
+            e =  '<span style="animation: floatup 1s forwards;margin-left:10px;" id="Dom2" class="badge rounded-pill bg-danger" onclick="onLastLevelForDomestic(\'' + p[i] + '\')">'+p[i]+'</span> '
         }
         $("#chatbox").append(e);
     }
@@ -178,7 +178,7 @@ function showLightingMapinfo(info){
     
     let p = led_lighting_map[info];
     for(var i= 0;i<p.length;i++){
-    let p1 =  '<span style="animation: floatup 3s forwards;" id="Dom3" class="badge bg-warning text-dark" onclick="removeshowLightingMapinfo(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
+    let p1 =  '<span style="animation: floatup 1s forwards; margin-left:10px;" id="Dom3" class="badge bg-warning text-dark" onclick="removeshowLightingMapinfo(\'' + p[i] + '\')">'+p[i]+'</span>'
     $("#chatbox").append(p1);
 }
 
@@ -201,13 +201,13 @@ function showRanges(ranges){
     contentToRemove('#Dom2')
 
     let message = ranges==="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)"?"Can you select a "+ranges+" size that best defines your need? 👇 If you are not sure about which Size and length to select, you can click on Restart":"";
-    let eqD =  '<span style="animation: floatup 3s forwards;" class="badge bg-primary" >'+equipMentSize1[0]+'</span>&nbsp;'
+    let eqD =  '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+equipMentSize1[0]+'</span>'
     let rage
     let rage_m
     if(ranges==="FIRE RETARDANT LOW SMOKE HALOGEN (FRLSH)"){
         
         for(var i=1;i<equipMentSize1.length;i++){
-             eqD = eqD + '<span style="animation: floatup 3s forwards;" class="badge bg-primary" >'+equipMentSize1[i]+'</span>&nbsp;'
+             eqD = eqD + '<span style="animation: floatup 1s forwards;margin-left:10px;" class="badge bg-primary" >'+equipMentSize1[i]+'</span>'
 
         }
 
@@ -220,7 +220,7 @@ function showRanges(ranges){
 
     }else{
         for(var i=1;i<equipMentSize2.length;i++){
-            eqD = eqD + '<span style="animation: floatup 3s forwards;" class="badge bg-primary" >'+equipMentSize2[i]+'</span>&nbsp;'
+            eqD = eqD + '<span style="animation: floatup 1s forwards;margin-left:10px;" class="badge bg-primary" >'+equipMentSize2[i]+'</span>'
 
        }
 
@@ -232,7 +232,7 @@ function showRanges(ranges){
         </div>`
     }
 
-    let e =  '<span style="animation: floatup 3s forwards;" class="badge bg-primary" >'+rage_m+'</span>'
+    let e =  '<span style="animation: floatup 1s forwards;" class="badge bg-primary" >'+rage_m+'</span>'
     $("#chatbox").append('<br/><br/>');
 
     $("#chatbox").append(eqD+'<br><br>');
@@ -254,7 +254,7 @@ let des =  '<div class="startChat" class="alert alert-danger" role="alert">'+dia
 $("#chatbox").append(des);
 
 
-let restart =  '<button style="animation: floatup 3s forwards;" type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button><br><br>'
+let restart =  '<button style="width:100px; " type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button><br><br>'
 $("#chatbox").append(restart);
 
 
@@ -276,7 +276,7 @@ function onLastLevelForDomestic2(product){
     $("#chatbox").append(des);
     
     
-    let restart =  '<button style="animation: floatup 3s forwards;" type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button><br><br>'
+    let restart =  '<button style="animation: floatup 1s forwards;" type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button>'
     $("#chatbox").append(restart);
     
     
@@ -297,7 +297,7 @@ function onclickIndustrialCat(){
    
 
     for(var i in insdustrialCatMap){
-        let e =  '<span style="animation: floatup 3s forwards;" class="badge bg-success" id="insdustrial_l1" onclick="showIndustProduct(\'' + i + '\')">'+i+'</span>&nbsp;'
+        let e =  '<span style="animation: floatup 1s forwards; margin-left:10px;" class="badge bg-success" id="insdustrial_l1" onclick="showIndustProduct(\'' + i + '\')">'+i+'</span>'
         $("#chatbox").append(e);
     }
     $("#chatbox").append('<br/><br/>');
@@ -321,10 +321,10 @@ function showIndustProduct(product){
     for(var i= 0;i<p.length;i++){
         let p1;
         if(product==="LED LIGHTING"){
-             p1 =  '<span style="animation: floatup 3s forwards;" onclick="onLastLevel(\'' + p[i] + '\')" id="insdustrial_l2" class="badge bg-warning text-dark" onclick="showLightiningCat(\'' + p[i] + '\')">'+p[i]+'</span>&nbsp;'
+             p1 =  '<span style="animation: floatup 1s forwards; margin-left:10px" onclick="onLastLevel(\'' + p[i] + '\')" id="insdustrial_l2" class="badge bg-warning text-dark" onclick="showLightiningCat(\'' + p[i] + '\')">'+p[i]+'</span>'
             $("#chatbox").append(p1);
         }else{
-            p1 =  '<span style="animation: floatup 3s forwards;" onclick="onLastLevel(\'' + p[i] + '\')" id="insdustrial_l2" class="badge bg-warning text-dark">'+p[i]+'</span>&nbsp;'
+            p1 =  '<span style="animation: floatup 1s forwards; margin-left:10px" onclick="onLastLevel(\'' + p[i] + '\')" id="insdustrial_l2" class="badge bg-warning text-dark">'+p[i]+'</span>'
             $("#chatbox").append(p1);   
         }
 
@@ -347,7 +347,7 @@ contentToRemove('#insdustrial_l2')
 $("#chatbox").append(des);
 
 
-let restart =  '<button style="animation: floatup 3s forwards;" type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button><br><br>'
+let restart =  '<button style="width:100px;" type="button" onclick="onclickAppendBroweCat()" id="restart_button" class="btn btn-primary">' +'Restart'+'</button><br><br>'
 $("#chatbox").append(restart);
 
 
@@ -370,7 +370,7 @@ function showLightiningCat(cat){
     let p = lighting_map[cat]
 
     for(var i= 0;i<p.length;i++){
-        let p1 =  '<span style="animation: floatup 3s forwards;" onclick="onLastLevel(\'' + p[i] + '\')" class="badge rounded-pill bg-info text-dark">'+p[i]+'</span>&nbsp;'
+        let p1 =  '<span style="animation: floatup 1s forwards;" onclick="onLastLevel(\'' + p[i] + '\')" class="badge rounded-pill bg-info text-dark">'+p[i]+'</span>'
         $("#chatbox").append(p1);
     }
 

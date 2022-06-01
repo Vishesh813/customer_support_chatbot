@@ -21,6 +21,8 @@
 
 #category,#restart_button{
     width: auto;
+    margin-top: 10px;
+
 }
 .content {
     max-height: 0;
@@ -118,6 +120,7 @@
     line-height: 1.5em;
     display: inline-block;
     padding: 10px;
+    font-size: 14px;
     border-radius: 8px;
     border-bottom-right-radius: 2px;
     max-width: 80%;
@@ -211,4 +214,10 @@
 
 
 #cross-icon{
+}
+
+#give_margin{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
 }
