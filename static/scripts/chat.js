@@ -26,6 +26,13 @@ function contentToRemove(id){
     $(content).remove()
    }
 
+   $("#chat-icon").click(function(){
+    var element = document.getElementById('cross-icon');
+    element.style.display = "none";
+   
+   });
+
+   
 // Collapsible
 var coll = document.getElementsByClassName("collapsible");
 var element = document.getElementById('cross-icon');
@@ -83,7 +90,7 @@ function firstBotMessage() {
      $("#chatbox").append(broweCatbutton);
 
 
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
 }
 
 
@@ -105,8 +112,7 @@ function catClickEvent(){
     $("#chatbox").append(cat2);
 
 
-   document.getElementById("userInput").scrollIntoView(false);
-
+   document.getElementById("chat-bar-bottom").scrollIntoView(true);
       
 }
 //Domestic
@@ -131,7 +137,7 @@ function onClickDomesticCat(){
     }
 
     $("#chatbox").append('<br/><br/>');
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
 }
 
@@ -164,7 +170,7 @@ function showDomesticCatValue(cat){
         $("#chatbox").append(e);
     }
     $("#chatbox").append('<br/><br/>');
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
   
 }
 
@@ -183,7 +189,7 @@ function showLightingMapinfo(info){
 }
 
 $("#chatbox").append('<br/><br/>');
-document.getElementById("userInput").scrollIntoView(false);
+document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
 }
 
@@ -237,7 +243,7 @@ function showRanges(ranges){
 
     $("#chatbox").append(eqD+'<br><br>');
     onLastLevelForDomestic2(ranges)
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
 }
 
@@ -258,7 +264,7 @@ let restart =  '<button style="width:100px; " type="button" onclick="onclickAppe
 $("#chatbox").append(restart);
 
 
-document.getElementById("userInput").scrollIntoView(false);
+document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
 }
 function onLastLevelForDomestic2(product){
@@ -280,7 +286,7 @@ function onLastLevelForDomestic2(product){
     $("#chatbox").append(restart);
     
     
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
     
     
     }
@@ -301,7 +307,7 @@ function onclickIndustrialCat(){
         $("#chatbox").append(e);
     }
     $("#chatbox").append('<br/><br/>');
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
 }
 
@@ -332,7 +338,7 @@ function showIndustProduct(product){
     }
 
     $("#chatbox").append('<br/><br/>');
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
 }
 
@@ -351,8 +357,7 @@ let restart =  '<button style="width:100px;" type="button" onclick="onclickAppen
 $("#chatbox").append(restart);
 
 
-document.getElementById("userInput").scrollIntoView(false);
-
+document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
 }
 
@@ -375,7 +380,7 @@ function showLightiningCat(cat){
     }
 
     $("#chatbox").append('<br/><br/>');
-    document.getElementById("userInput").scrollIntoView(false);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
 }
 
 
