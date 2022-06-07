@@ -1,3 +1,4 @@
+
 function sleep(milliseconds) {
   const date = Date.now();
   let currentDate = null;
@@ -21,27 +22,54 @@ function appendChatResponse(section){
 }
 
 
+
 function contentToRemove(id){
     var content = document.querySelectorAll(id)
     $(content).remove()
    }
 
-   $("#chat-icon").click(function(){
-    var element = document.getElementById('cross-icon');
-    element.style.display = "none";
+   $("#cross-icon").click(function(){
+   
+    hideElementById("full_chat_body")
    
    });
 
-   
-// Collapsible
+   $("#chat-icon").click(function(){
+      showChatFullBody(); 
+   });
+
+   function hideElementById(id) {
+    var elements = document.getElementById(id);
+      elements.style.display = "none";
+
+  }
+
+
+  function showChatFullBody() {
+    
+    var element = document.getElementById('full_chat_body');
+
+    var displaySetting = element.style.display;
+
+    if (displaySetting == 'none') {
+    
+        console.log("none")
+      element.style.display = null;
+    
+    }
+    else {
+        console.log("visible")
+      element.style.display = 'none';
+    }
+  }
+
+/* Collapsible
 var coll = document.getElementsByClassName("collapsible");
-var element = document.getElementById('cross-icon');
-element.style.display = "none";
+
 
 
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function () {
-        $(element).toggle();
 
         this.classList.toggle("active");
         
@@ -54,7 +82,7 @@ for (let i = 0; i < coll.length; i++) {
         }
 
     });
-}
+} 
 
 function getTime() {
     let today = new Date();
@@ -72,7 +100,7 @@ function getTime() {
     let time = hours + ":" + minutes;
     return time;
 }
-
+*/
 // Gets the first message
 function firstBotMessage() {
    let firstBotMessage =  '<div id="give_margin" class="startChat">I\'m TIA, your intelligent virtual assistant. <br>How can I help you today?</div>'
