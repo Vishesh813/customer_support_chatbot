@@ -31,11 +31,12 @@ function contentToRemove(id){
    $("#cross-icon").click(function(){
    
     hideElementById("full_chat_body")
-   
+    showChatFullBodyById('chat-icon'); 
    });
 
    $("#chat-icon").click(function(){
-      showChatFullBody(); 
+      showChatFullBodyById('full_chat_body'); 
+      hideElementById("chat-icon");
    });
 
    function hideElementById(id) {
@@ -44,10 +45,9 @@ function contentToRemove(id){
 
   }
 
-
-  function showChatFullBody() {
+  function showChatFullBodyById(id) {
     
-    var element = document.getElementById('full_chat_body');
+    var element = document.getElementById(id);
 
     var displaySetting = element.style.display;
 
